@@ -69,4 +69,21 @@ pub struct OreProcess {
     pub amount: u32,
 }
 
+impl Process for OreProcess {
+     // Note the use of associated functions as a means to "configure" our belt
+     type RawMaterial = IronOre;
+     type Product = Steel;
+     
+     /// Processes the item from a raw material to a product.
+     fn push_along_the_belt(&self, material: Self::RawMaterial) -> Self::Product {
+        Steel {amount: material.amount /2 }
+     }
+
+       // The raw material to process on this belt
+    fn material(&self) -> Self::RawMaterial {
+        IronOre {amount: self.amount}
+
+    }
+}
+
 // TODO: Implement Process for OreProcess (hint.. factory/src/main.rs)

@@ -19,6 +19,10 @@ use factory::{Factory, OreProcess};
 /// 5) Run `cargo run --bin scratchpad` and you're off to the races
 
 fn main() {
-    // Your code goes here
-    println!("Hello, world!");
+    let ore_process: OreProcess = OreProcess {amount: 20};
+    let ore_process_2: OreProcess = OreProcess {amount: 16};
+    let mut factory: Factory<OreProcess> = Factory::new(0);
+    factory.add_new_process(ore_process);
+    factory.add_new_process(ore_process_2);
+    factory.run();
 }
